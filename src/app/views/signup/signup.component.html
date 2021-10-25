@@ -1,0 +1,86 @@
+<form
+  #myForm="ngForm"
+  (ngSubmit)="singUp(myForm.value); myForm.reset()"
+  class="container"
+>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control mt-2"
+      id="name"
+      placeholder="Enter Your Name"
+      name="name"
+      ngModel
+      #name="ngModel"
+      required
+      minlength="3"
+    />
+    <div class="errors text-center" *ngIf="name.touched && name.invalid">
+      <div *ngIf="name.errors?.required">* Name Is Required *</div>
+      <div *ngIf="name.errors?.minlength">
+        * Name minlength is {{ name.errors?.minlength.requiredLength }} *
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input
+      type="number"
+      class="form-control mt-2"
+      id="age"
+      placeholder="Enter Your Age"
+      name="age"
+      ngModel
+      #age="ngModel"
+      required
+    />
+    <div class="errors text-center" *ngIf="age.touched && age.invalid">
+      <div *ngIf="age.errors?.required">* Age Is Required *</div>
+    </div>
+    <div *ngIf="invalidAge">* Age must be a positive number *</div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      class="form-control mt-2"
+      id="email"
+      placeholder="Enter Your Email"
+      name="email"
+      ngModel
+      #email="ngModel"
+      required
+      email
+    />
+    <div class="errors text-center" *ngIf="email.touched && email.invalid">
+      <div *ngIf="email.errors?.required">* Email Is Required *</div>
+      <div *ngIf="email.errors?.email">* Wrong Email *</div>
+    </div>
+    <div *ngIf="invalidAge">* Email is already in use *</div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      class="form-control mt-2"
+      id="password"
+      placeholder="Enter Your password"
+      name="password"
+      ngModel
+      #password="ngModel"
+      required
+      minlength="6"
+    />
+    <div
+      class="errors text-center"
+      *ngIf="password.touched && password.invalid"
+    >
+      <div *ngIf="password.errors?.required">* Password Is Required *</div>
+      <div *ngIf="password.errors?.minlength">
+        * Password minlength is {{ password.errors?.minlength.requiredLength }} *
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]='myForm.invalid'>Submit</button>
+  </div>
+</form>

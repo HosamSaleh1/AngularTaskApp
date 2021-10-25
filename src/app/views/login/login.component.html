@@ -1,0 +1,26 @@
+<form class="container" #myForm='ngForm' (ngSubmit)='login(myForm.value)'>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" ngModel #email='ngModel' required email>
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    
+    <div *ngIf='email.touched && email.invalid' class="errors text-center">
+      <div *ngIf='email.errors?.required' class="errors">* Email is required *</div>'
+      <div *ngIf='email.errors?.email' class="errors">* Wrong Email  *</div>'
+    </div>
+
+  </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" required minlength="6" ngModel #password="ngModel">
+  
+    <div *ngIf='password.touched && password.invalid' class="errors text-center">
+      <div *ngIf='password.errors?.required' class="errors">* Password is required *</div>'
+      <div *ngIf='password.errors?.minlength' class="errors">* Password minlength is {{password.errors?.minlength.requiredLength}}  *</div>'
+</div>
+</div>
+    <div class="errors text-center" *ngIf='invalidLogin'>
+      * Wrong Email or Password *
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]='myForm.invalid'>Submit</button>
+</form>
