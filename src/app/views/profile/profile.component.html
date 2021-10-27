@@ -1,1 +1,17 @@
+<div class="container text-center">
 <h1>Welcome {{user.name}}</h1>
+<h3>Add Image</h3>
+<br>
+<br>
+<img src='data:image/png;base64,{{user.avatar}}'  width="300px">
+<br>
+<br>
+<input type="file" name="avatar" (change)='handleUpload($event)' multiple accept="image/*"/>
+<br>
+<br>
+<button type="button" class="btn btn-primary" (click)='uploadFile()' *ngIf='file'>Upload</button>
+<br>
+<br>
+<button type="button" class="btn btn-primary" (click)='addTask()'>Add Task</button>
+<button type="button" class="btn btn-primary ms-2" (click)='viewTasks()' >View Tasks</button>
+</div>

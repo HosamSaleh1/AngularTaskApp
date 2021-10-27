@@ -14,5 +14,9 @@ export class UsersService {
   getProfileService(){
     return this.http.get<Users>(this.url+'profile')
   }
+  
+  addImageService(image:any){
+  return this.http.post(this.url + 'profile/avatar', image)
+  }
 
 }

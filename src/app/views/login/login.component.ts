@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
-import { UsersService } from 'src/app/service/users.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +11,8 @@ export class LoginComponent implements OnInit {
 
   user:any
   token:any
-invalidLogin:boolean=false
+  invalidLogin:boolean=false
+  
   constructor(private authService:AuthService, private router:Router) { }
 
   login(credentials:any){

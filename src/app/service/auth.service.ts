@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -20,5 +20,9 @@ export class AuthService {
   
   loginService(credentials:any){
     return this.http.post(this.url+'login',credentials)
+  }
+
+  logoutService(){
+    return this.http.delete(this.url + 'logout')
   }
 }
