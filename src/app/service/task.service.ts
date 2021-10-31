@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TaskService {
 
-  url = 'http://localhost:3000/'
+  url = 'https://task-manger-api-app.herokuapp.com/'
 
   constructor(private http:HttpClient) { }
 
